@@ -1,8 +1,8 @@
 const randomNumber = function (min, max){
   if (max<=min) {
-  return 'Сначала введите меньшее число, а потом - большее!';
+    return 'Сначала введите меньшее число, а потом - большее!';
   } else {
-  return Math.floor(Math.random()*(max-min));
+    return Math.floor(Math.random()*(max-min));
   }
 };
 
