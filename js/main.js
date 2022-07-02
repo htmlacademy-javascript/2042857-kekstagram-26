@@ -1,7 +1,6 @@
 const randomNumber = function (min, max){
   if (max<=min) {
-    document.write ('Сначала введите меньшее число, а потом - большее!');
-    return;
+  return 'Сначала введите меньшее число, а потом - большее!';
   } else {
   return Math.floor(Math.random()*(max-min));
   }
