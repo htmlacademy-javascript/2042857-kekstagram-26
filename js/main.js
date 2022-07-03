@@ -8,14 +8,8 @@ const randomNumber = function (min, max){
 
 randomNumber(0, 1000);
 
-let commentText = document.querySelector('.text__description');
-
-let checkLength = function (){
-  if (commentText.value<=140) {
-    return true;
-  } else {
-    return false;
-  }
+function checkLength(testString, maxLength) {
+  return testString.length <= maxLength
 };
 
-checkLength ();
+checkLength ('Проверочный комментарий', 140);
