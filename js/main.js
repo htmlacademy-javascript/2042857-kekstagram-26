@@ -10,6 +10,6 @@ randomNumber(0, 1000);
 
 function checkLength(testString, maxLength) {
   return testString.length <= maxLength;
-};
+}
 
 checkLength ('Проверочный комментарий', 140);
