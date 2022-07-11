@@ -81,5 +81,4 @@ const createDescriptions = (count) => {
   return photoID;
 };
 
-const description = createDescriptions(MAX_DESCRIPTION_COUNT);
-description;
+createDescriptions(MAX_DESCRIPTION_COUNT);
