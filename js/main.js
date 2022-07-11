@@ -29,7 +29,7 @@ const MAX_COMMENTS_COUNT = 10;
 const MAX_DESCRIPTION_COUNT = 25;
 
 for (let i=1; i<=MAX_DESCRIPTION_COUNT; i++){
-  let photos = "photos/"+[i]+".jpg"
+  const photos = 'photos/'+[i]+'.jpg';
   photoUrls.push(photos);
 }
 
@@ -38,15 +38,15 @@ const getPhotoUrl = function () {
 };
 
 for (let i=1; i<=MAX_DESCRIPTION_COUNT; i++){
-  photoDescriptions.push("Описание"+i);
-};
+  photoDescriptions.push('Описание'+i);
+}
 const getPhotoDescription = function () {
   return photoDescriptions.shift();
 };
 
 for (let i=1; i<=MAX_COMMENTS_COUNT*MAX_DESCRIPTION_COUNT; i++){
   idsForComments.push(i);
-};
+}
 const getIdComment = function () {
   return idsForComments.shift();
 };
@@ -74,7 +74,7 @@ const getNewPhoto = (id) => ({
   comment: getComments(getRandomPositiveInteger(2, MAX_COMMENTS_COUNT))
 });
 
-let createDescriptions = (count) => {
+const createDescriptions = (count) => {
   const photoID = [];
   for (let i=1; i<=count; i++){
     photoID.push(getNewPhoto(i));
@@ -83,4 +83,3 @@ let createDescriptions = (count) => {
 };
 
 const description = createDescriptions(MAX_DESCRIPTION_COUNT);
-console.log(description);
