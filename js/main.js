@@ -1,25 +1,25 @@
 const getRandomPositiveInteger = (a, b) => {
-    const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
-    const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
-    const result = Math.random() * (upper - lower + 1) + lower;
-    return Math.floor(result);
+  const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
+  const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
 };
 const getRandomArrayElement = (elements) => {
-    return elements[getRandomPositiveInteger(0, elements.length - 1)];
+  return elements[getRandomPositiveInteger(0, elements.length - 1)];
 };
 const AVATAR_IMG = [
-    'img/avatar-1','img/avatar-2','img/avatar-3','img/avatar-4','img/avatar-5','img/avatar-6'
+  'img/avatar-1','img/avatar-2','img/avatar-3','img/avatar-4','img/avatar-5','img/avatar-6'
 ];
 const COMMENTER_NAMES = [
-    'Имя1','Имя2','Имя3','Имя4','Имя5','Имя6','Имя7','Имя8','Имя9','Имя10'
+  'Имя1','Имя2','Имя3','Имя4','Имя5','Имя6','Имя7','Имя8','Имя9','Имя10'
 ];
 const COMMENT_MESSAGES = [
-    'Всё отлично!',
-    'В целом всё неплохо. Но не всё.',
-    'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-    'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-    'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-    'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
+  'Всё отлично!',
+  'В целом всё неплохо. Но не всё.',
+  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
+  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
+  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
+  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
 let photoUrls = [];
@@ -29,55 +29,56 @@ const MAX_COMMENTS_COUNT = 10;
 const MAX_DESCRIPTION_COUNT = 25;
 
 for (let i=1; i<=MAX_DESCRIPTION_COUNT; i++){
-    photoUrls.push('photos/'+i+'.jpg');
-};
+  photoUrls.push('photos/'+i+'.jpg');
+}
+
 const getPhotoUrl = function () {
-     return photoUrls.shift();
+  return photoUrls.shift();
 };
 
 for (let i=1; i<=MAX_DESCRIPTION_COUNT; i++){
-    photoDescriptions.push('Описание'+i);
+  photoDescriptions.push('Описание'+i);
 };
 const getPhotoDescription = function () {
-    return photoDescriptions.shift();
+  return photoDescriptions.shift();
 };
 
 for (let i=1; i<=MAX_COMMENTS_COUNT*MAX_DESCRIPTION_COUNT; i++){
-    idsForComments.push(i);
+  idsForComments.push(i);
 };
 const getIdComment = function () {
-    return idsForComments.shift();
+  return idsForComments.shift();
 };
 
 const getNewComment = () => ({
-    id: (getIdComment()),
-    avatar: getRandomArrayElement(AVATAR_IMG),
-    message: getRandomArrayElement(COMMENT_MESSAGES),
-    name: getRandomArrayElement(COMMENTER_NAMES)
+  id: (getIdComment()),
+  avatar: getRandomArrayElement(AVATAR_IMG),
+  message: getRandomArrayElement(COMMENT_MESSAGES),
+  name: getRandomArrayElement(COMMENTER_NAMES)
 });
 
 const getComments = function (count) {
-    const commentsArray = [];
-    for (let i=1; i<=count; i++){
-        commentsArray.push(getNewComment());
-    }
-    return commentsArray;
+  const commentsArray = [];
+  for (let i=1; i<=count; i++){
+    commentsArray.push(getNewComment());
+  }
+  return commentsArray;
 };
 
 const getNewPhoto = (id) => ({
-    id,
-    url:(getPhotoUrl()),
-    likes: getRandomPositiveInteger(15, 200),
-    description: (getPhotoDescription()),
-    comment: getComments(getRandomPositiveInteger(2, MAX_COMMENTS_COUNT))
+  id,
+  url:(getPhotoUrl()),
+  likes: getRandomPositiveInteger(15, 200),
+  description: (getPhotoDescription()),
+  comment: getComments(getRandomPositiveInteger(2, MAX_COMMENTS_COUNT))
 });
 
 let createDescriptions = (count) => {
-    const photoID = [];
-    for (let i=1; i<=count; i++){
-        photoID.push(getNewPhoto(i));
-    }
-    return photoID;
+  const photoID = [];
+  for (let i=1; i<=count; i++){
+    photoID.push(getNewPhoto(i));
+  }
+  return photoID;
 };
 
 const description = createDescriptions(MAX_DESCRIPTION_COUNT);
