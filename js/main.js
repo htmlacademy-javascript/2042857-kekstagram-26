@@ -4,7 +4,7 @@ const getRandomPositiveInteger = (a, b) => {
   const result = Math.random() * (upper - lower + 1) + lower;
   return Math.floor(result);
 };
-const getRandomArrayElement = (elements) => {
+const getRandomArrayElement = function(elements) {
   return elements[getRandomPositiveInteger(0, elements.length - 1)];
 };
 const AVATAR_IMG = [
@@ -22,14 +22,14 @@ const COMMENT_MESSAGES = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-let photoUrls = [];
-let photoDescriptions = [];
-let idsForComments = [];
+const photoUrls = [];
+const photoDescriptions = [];
+const idsForComments = [];
 const MAX_COMMENTS_COUNT = 10;
 const MAX_DESCRIPTION_COUNT = 25;
 
 for (let i=1; i<=MAX_DESCRIPTION_COUNT; i++){
-  photoUrls.push('photos/'+i+'.jpg');
+  photoUrls.push(`photos/${i}.jpg`);
 }
 
 const getPhotoUrl = function () {
@@ -37,15 +37,15 @@ const getPhotoUrl = function () {
 };
 
 for (let i=1; i<=MAX_DESCRIPTION_COUNT; i++){
-  photoDescriptions.push('Описание'+i);
-};
+  photoDescriptions.push(`Описание${i}`);
+}
 const getPhotoDescription = function () {
   return photoDescriptions.shift();
 };
 
 for (let i=1; i<=MAX_COMMENTS_COUNT*MAX_DESCRIPTION_COUNT; i++){
   idsForComments.push(i);
-};
+}
 const getIdComment = function () {
   return idsForComments.shift();
 };
@@ -73,7 +73,7 @@ const getNewPhoto = (id) => ({
   comment: getComments(getRandomPositiveInteger(2, MAX_COMMENTS_COUNT))
 });
 
-let createDescriptions = (count) => {
+const createDescriptions = (count) => {
   const photoID = [];
   for (let i=1; i<=count; i++){
     photoID.push(getNewPhoto(i));
@@ -81,5 +81,4 @@ let createDescriptions = (count) => {
   return photoID;
 };
 
-const description = createDescriptions(MAX_DESCRIPTION_COUNT);
-console.log(description);
+createDescriptions(MAX_DESCRIPTION_COUNT);
