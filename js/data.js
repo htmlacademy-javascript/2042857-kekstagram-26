@@ -19,14 +19,14 @@ const COMMENT_MESSAGES = [
 const photoUrls = [];
 const photoDescriptions = [];
 const idsForComments = [];
-export const MAX_COMMENTS_COUNT = 10;
+const MAX_COMMENTS_COUNT = 10;
 const MAX_DESCRIPTION_COUNT = 25;
 
 for (let i=1; i<=MAX_DESCRIPTION_COUNT; i++){
   photoUrls.push(`photos/${i}.jpg`);
 }
 
-export const getPhotoUrl = function () {
+const getPhotoUrl = function () {
   return photoUrls.shift();
 };
 
@@ -59,7 +59,7 @@ const getComments = function (count) {
   return commentsArray;
 };
 
-export const getNewPhoto = (id) => ({
+const getNewPhoto = (id) => ({
   id,
   url:(getPhotoUrl()),
   likes: getRandomPositiveInteger(15, 200),
@@ -67,7 +67,7 @@ export const getNewPhoto = (id) => ({
   comment: getComments(getRandomPositiveInteger(2, MAX_COMMENTS_COUNT))
 });
 
-const createDescriptions = (count) => {
+const createPhoto = (count) => {
   const photoID = [];
   for (let i=1; i<=count; i++){
     photoID.push(getNewPhoto(i));
@@ -75,4 +75,3 @@ const createDescriptions = (count) => {
   return photoID;
 };
 
-createDescriptions(MAX_DESCRIPTION_COUNT);
