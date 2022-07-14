@@ -64,7 +64,7 @@ const getNewPhoto = (id) => ({
   url:(getPhotoUrl()),
   likes: getRandomPositiveInteger(15, 200),
   description: (getPhotoDescription()),
-  comment: getComments(getRandomPositiveInteger(2, MAX_COMMENTS_COUNT))
+  comments: getComments(getRandomPositiveInteger(2, MAX_COMMENTS_COUNT))
 });
 
 const createPhoto = (count) => {
@@ -75,3 +75,7 @@ const createPhoto = (count) => {
   return photoID;
 };
 
+export {createPhoto}; 
+export const urlForExport = getNewPhoto.url;
+export const likesForExport = getNewPhoto.likes;
+export const commentsForExport = getNewPhoto.comments;
