@@ -1,5 +1,5 @@
-import { getRandomPositiveInteger } from './util';
-import { getRandomArrayElement } from './util';
+import { getRandomPositiveInteger } from './util.js';
+import { getRandomArrayElement } from './util.js';
 
 const AVATAR_IMG = [
   'img/avatar-1','img/avatar-2','img/avatar-3','img/avatar-4','img/avatar-5','img/avatar-6'
@@ -76,6 +76,4 @@ const createPhoto = (count) => {
 };
 
 export {createPhoto};
-export const urlForExport = getNewPhoto.url;
-export const likesForExport = getNewPhoto.likes;
-export const commentsForExport = getNewPhoto.comments;
+export {MAX_DESCRIPTION_COUNT};
