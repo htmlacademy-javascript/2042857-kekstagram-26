@@ -5,7 +5,7 @@ const pictureTemplate = document.querySelector ('#picture')
   .content
   .querySelector('a');
 
-const drawPicture = function (photo) {
+const drawPicture = function () {
   const newPicture = pictureTemplate.cloneNode(true);
 
   const pictureSrcElement = newPicture.querySelector('src');
@@ -16,24 +16,13 @@ const drawPicture = function (photo) {
   pictureCommentsElement.textContent = commentsForExport;
 
   return newPicture;
-} 
+};
 
 export const drawMiniatures = (photos) => {
   const fragment = document.createDocumentFragment();
-  photos.forEach(photo => {
+  photos.forEach(function(photo){
     const pictureEl = drawPicture(photo);
     fragment.appendChild(pictureEl);
-  });
+  }
   pictures.append(fragment);
-} 
-
-
-
-
-
-
-//Адрес изображения url подставьте как атрибут src изображения.
-//Количество лайков likes выведите в блок .picture__likes.
-//Количество комментариев comments выведите в блок .picture__comments.
-//Отрисуйте сгенерированные DOM-элементы в блок .pictures. Для вставки элементов используйте DocumentFragment.
-
+};
