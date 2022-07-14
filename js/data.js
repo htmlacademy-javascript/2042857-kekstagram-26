@@ -75,7 +75,7 @@ const createPhoto = (count) => {
   return photoID;
 };
 
-export {createPhoto}; 
+export {createPhoto};
 export const urlForExport = getNewPhoto.url;
 export const likesForExport = getNewPhoto.likes;
 export const commentsForExport = getNewPhoto.comments;
