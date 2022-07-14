@@ -21,7 +21,7 @@ const drawMiniatures = (photos) => {
   photos.forEach=(photo)=>{
     const pictureEl = drawPicture(photo);
     fragment.appendChild(pictureEl);
-  }
+  };
   pictures.append(fragment);
 };
 
