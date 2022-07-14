@@ -1,5 +1,5 @@
-import { getRandomPositiveInteger } from './util';
-import { getRandomArrayElement } from './util';
+import { getRandomPositiveInteger } from './util.js';
+import { getRandomArrayElement } from './util.js';
 
 const AVATAR_IMG = [
   'img/avatar-1','img/avatar-2','img/avatar-3','img/avatar-4','img/avatar-5','img/avatar-6'
@@ -64,10 +64,10 @@ const getNewPhoto = (id) => ({
   url:(getPhotoUrl()),
   likes: getRandomPositiveInteger(15, 200),
   description: (getPhotoDescription()),
-  comment: getComments(getRandomPositiveInteger(2, MAX_COMMENTS_COUNT))
+  comments: getComments(getRandomPositiveInteger(2, MAX_COMMENTS_COUNT))
 });
 
-const createDescriptions = (count) => {
+const createPhoto = (count) => {
   const photoID = [];
   for (let i=1; i<=count; i++){
     photoID.push(getNewPhoto(i));
@@ -75,4 +75,5 @@ const createDescriptions = (count) => {
   return photoID;
 };
 
-createDescriptions(MAX_DESCRIPTION_COUNT);
+export {createPhoto};
+export {MAX_DESCRIPTION_COUNT};
